@@ -1,49 +1,45 @@
 import "../scss/main.scss";
+import { throws } from "assert";
 
 document.addEventListener('DOMContentLoaded', function() {
     class Generator {
         constructor() {
             this.width = 10;
             this.height = 10;
-            this.cells = [];
+            // this.cells = [];
         };
         createBoard() {
+            let array = [];
 
             for (let i=0; i<=10; i++) {
-                this.cells[i] = [];
+                array[i] = [];
                 for(let j=0; j<10; j++) {
                     let newDiv = document.createElement('div');
-                    this.cells[i][j] = newDiv;
+                    array[i][j] = newDiv;
                     newDiv.className = "cell";
                     document.getElementById("board").appendChild(newDiv);  
                 }
             }
-            // for(let i=0; i<this.width; i++) {
-            //     let newDiv = document.createElement("div");  
-            //     newDiv.classList.add("col");
-            //     document.getElementById("board").appendChild(newDiv); 
-            // };
-            // let column = document.querySelectorAll(".col");
-            // for (let i = 0; i < column.length; i++) {
-            //     this.cells[i] = [];
-            //     for (let j = 0; j < this.height; j++) {
-            //         let newDiv = document.createElement('div');
-            //         this.cells[i][j] = newDiv;
-            //         newDiv.className = "cell";
-            //         column[i].appendChild(newDiv);
-            //     }
-            // };
-            let a = 1;
-
-            for(let i=0; i<this.cells.length; i++) {
-                for(let j=0; j<this.cells[i].length; j++)
-                    this.cells[i][j].addEventListener('click', function() { 
-                        console.log("działa");
-                        this.classList.add("active");
-                        console.log(`[${i}][${j}]`);
-                        console.log( this.parentElement.find(this.cells[1][2]));
-                        this.parentElement.find(this.cells[i+1][j+2]).classList.add("active");
-                })
+            
+            for(let i=0; i<array.length; i++) {
+                for(let j=0; j<array[i].length; j++) {
+                    array[i][j].addEventListener('click', function() { 
+                        console.log('działa');
+                        if (this.classList.contains('active') ) {
+                            this.classList.add('active');
+                        } else {
+                            this.classList.add('active');
+                            if(array[i+1][j].classList.contains('active') && array[i-1][j].classList.contains('active') && array[i][j+1].classList.contains('active') && array[i][j-1].classList.contains('active')) {
+                                console.log('nic');    
+                            } else {
+                                array[i+1][j].classList.add('potentialActive');
+                                array[i-1][j].classList.add('potentialActive');
+                                array[i][j+1].classList.add('potentialActive');
+                                array[i][j-1].classList.add('potentialActive');
+                            }
+                        }
+                    })
+                }    
             }
 
         }
