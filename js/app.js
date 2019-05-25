@@ -6,41 +6,60 @@ document.addEventListener('DOMContentLoaded', function() {
         constructor() {
             this.width = 10;
             this.height = 10;
-            // this.cells = [];
         };
         createBoard() {
             let array = [];
 
-            for (let i=0; i<=10; i++) {
-                array[i] = [];
-                for(let j=0; j<10; j++) {
+            for (let x=0; x<=10; x++) {
+                array[x] = [];
+                for(let y=0; y<10; y++) {
                     let newDiv = document.createElement('div');
-                    array[i][j] = newDiv;
+                    array[x][y] = newDiv;
                     newDiv.className = "cell";
+                    newDiv.setAttribute("x",x);
+                    newDiv.setAttribute("y",y);
                     document.getElementById("board").appendChild(newDiv);  
                 }
             }
-            
-            for(let i=0; i<array.length; i++) {
-                for(let j=0; j<array[i].length; j++) {
-                    array[i][j].addEventListener('click', function() { 
-                        console.log('działa');
-                        if (this.classList.contains('active') ) {
-                            this.classList.add('active');
-                        } else {
-                            this.classList.add('active');
-                            if(array[i+1][j].classList.contains('active') && array[i-1][j].classList.contains('active') && array[i][j+1].classList.contains('active') && array[i][j-1].classList.contains('active')) {
-                                console.log('nic');    
-                            } else {
-                                array[i+1][j].classList.add('potentialActive');
-                                array[i-1][j].classList.add('potentialActive');
-                                array[i][j+1].classList.add('potentialActive');
-                                array[i][j-1].classList.add('potentialActive');
-                            }
-                        }
-                    })
-                }    
+            let something = document.querySelectorAll('.cell');
+            console.log(something);
+            console.log(array[0][3]);
+
+            for(let i=0; i<=something.length; i++) {
+                something[i].addEventListener('click', function() {
+                    let x = this.getAttribute('x');
+                    let y = this.getAttribute('y');
+                    
+                    //tutaj wpisać całą logikę
+
+                });
             }
+
+            // for(let i=0; i<array.length; i++) {
+            //     for(let j=0; j<array[i].length; j++) {
+                    // array[i][j].addEventListener('click', function() { 
+                    //     console.log('działa');
+                    //     if (this.classList.contains('active') ) {
+                    //         console.log(".");
+                    //     } else {
+                    //         this.classList.add('active');
+                    //         if(array[i+1][j].classList.contains('active') && array[i-1][j].classList.contains('active') && array[i][j+1].classList.contains('active') && array[i][j-1].classList.contains('active')) {
+                    //             console.log('nic');    
+                    //         } else { //tutaj wstawić sprawdzenie czy zawiera dla każdego pola indywidualnie
+                    //             if (this.classList.contains('active') ) {
+                    //                 console.log(".");
+                    //             } else 
+                    //             array[i+1][j].classList.add('potentialActive');
+                    //             array[i-1][j].classList.add('potentialActive');
+                    //             array[i][j+1].classList.add('potentialActive');
+                    //             array[i][j-1].classList.add('potentialActive');
+
+                    //         }
+                    //     }
+                    // })
+
+            //     }    
+            // }
 
         }
     }
