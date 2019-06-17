@@ -14,10 +14,12 @@ body {
     margin: auto;
     width: 500px;
     height: 500px;  
-    background-color: whitesmoke;
+    background-color: rgb(221, 217, 217);
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .cell {
     width: 40px;
