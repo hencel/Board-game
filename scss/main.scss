@@ -6,31 +6,73 @@
 body {
     background-size: cover;
     background-repeat: no-repeat;
+    .main {
+        padding: 30px;
+        // display: flex;
+     
+        // justify-content: center;
+        // align-items: center;
+        .title {
+            width: 100%;
+            text-align: center;
+            font-family: 'Indie Flower', cursive;
+            font-size: 2.5em;
+        }
+        #gameContainer {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: flex-start;
+            #board {
+                width: 70%;
+                margin: auto;
+                width: 500px;
+                height: 500px;  
+                background-color: rgb(221, 217, 217);
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding-top: 20px;
+                padding-bottom: 20px;
+                .cell {
+                    width: 40px;
+                    height: 40px;
+                    border: 1px solid red;
+                    border-radius: 10%;
+                    margin: 2px;
+                }
+                .active {
+                    background-color: red;
+                }
+                .potentialActive {
+                    background-color: green;
+                }
+            }
+            #diceContainer {
+                display: none;
+                width: 30%;
+                position: relative;
+                .diceArea {
+                    height: 15em;
+                    width: 15em;
+                    border: 1px solid grey;
+                    border-radius: 50%;
+                    position: absolute;
+                    .diceParagraph {
+                        position: absolute;
+                        top: 140px;
+                        left: 110px;
+                    }
+                }
+                .roll {
+                    position: absolute;
+                    // top: 20px;
+                    // left: 85px;
+                }         
+            }
+        }
+    
+    }
+    
 }
-.main {
-    padding: 30px;
-}
-#board {
-    margin: auto;
-    width: 500px;
-    height: 500px;  
-    background-color: rgb(221, 217, 217);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-.cell {
-    width: 40px;
-    height: 40px;
-    border: 1px solid red;
-    border-radius: 10%;
-    margin: 2px;
-}
-.active {
-    background-color: red;
-}
-.potentialActive {
-    background-color: green;
-}
+

@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
         constructor() {
             this.width = 10;
             this.height = 10;
+            this.features = [
+                {num:1, feature: 2}
+            ]
         };
         createBoard() {
             let gamePath = [];
@@ -16,9 +19,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById("board").appendChild(newDiv);
                 newDiv.className = "cell";
                 newDiv.classList.add('potentialActive');
+                
                 newDiv.setAttribute('data-id',i);
                 
-                newDiv.addEventListener('click', function() {
+                newDiv.addEventListener('click', (e) => {
                     if(this.classList.contains('potentialActive')){
                         let numberingCells = this.getAttribute('data-id');
                         console.log(numberingCells);
@@ -36,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         let numberingCellsminus10 = document.querySelector('div[data-id="'+(numberingCells-10)+'"]');
                         if(!numberingCellsminus10.classList.contains('active') ) {
                             numberingCellsminus10.classList.add('potentialActive');
-                        }
+                        } 
                         let numberingCellsplus10 = document.querySelector('div[data-id="'+(parseInt(numberingCells)+10)+'"]');
                         if(!numberingCellsplus10.classList.contains('active') ) {
                             numberingCellsplus10.classList.add('potentialActive');
@@ -48,18 +52,48 @@ document.addEventListener('DOMContentLoaded', function() {
                         let numberingCellsminus1 = document.querySelector('div[data-id="'+(parseInt(numberingCells)-1)+'"]');
                         if(!numberingCellsminus1.classList.contains('active') && (parseInt(numberingCells)-1)%10!=9) {
                             numberingCellsminus1.classList.add('potentialActive');
-                        }
-                        console.log((parseInt(numberingCells)-1)%10);
-                    }
+                        }  
+                    } 
                     this.classList.remove('potentialActive');
                 })
             }
-            console.log(gamePath)
+            console.log(gamePath);
+            return gamePath;
+        }
+        
+        dice() {
+            document.getElementById('diceContainer').style.display = 'block';
+
+            let button = document.createElement('button');
+            button.classList.add('roll');
+            document.getElementById('diceContainer').appendChild(button);
+            button.innerHTML = 'Rzuć kostką';
+
+            let diceRoll = () => {
+                let diceValue = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
+                diceParagraph.innerHTML = diceValue;
+                return diceValue;
+            }
+
+            button.addEventListener('click', () => { diceRoll() })
+
+            let dice = document.createElement('div');
+            dice.classList.add('diceArea');
+            document.getElementById('diceContainer').appendChild(dice);
+
+            let diceParagraph = document.createElement('p');
+            diceParagraph.classList.add('diceParagraph');
+            dice.appendChild(diceParagraph);
+        }
+        
+        game() {
+
         }
     }
 
     let generator = new Generator();
     generator.createBoard();
+    generator.dice();
 
     //ustawienie napisów Start, Koniec na pierwszym i ostatnim polu ścieżki
     //randomowe przypisanie funkcji pod pola ścieżki, poza startem i końcem
