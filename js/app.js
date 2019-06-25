@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let diceParagraph = document.createElement('p');
             diceParagraph.classList.add('diceParagraph');
             dice.appendChild(diceParagraph);
+            
         }
         
         game() {
