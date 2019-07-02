@@ -3,19 +3,22 @@
     padding: 0;
     box-sizing: content-box;
 }
+@mixin pawn {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+$fonts: 'Indie Flower', cursive;
+
 body {
     background-size: cover;
     background-repeat: no-repeat;
     .main {
         padding: 30px;
-        // display: flex;
-     
-        // justify-content: center;
-        // align-items: center;
         .title {
             width: 100%;
             text-align: center;
-            font-family: 'Indie Flower', cursive;
+            font-family: $fonts;
             font-size: 2.5em;
         }
         #gameContainer {
@@ -49,26 +52,46 @@ body {
                 }
             }
             #diceContainer {
-                display: none;
-                width: 30%;
+                display: block;
+                width: 40%;
                 position: relative;
                 .diceArea {
-                    height: 15em;
-                    width: 15em;
+                    display: block;
+                    height: 150px;
+                    width: 150px;
                     border: 1px solid grey;
-                    border-radius: 50%;
-                    position: absolute;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     .diceParagraph {
-                        position: absolute;
-                        top: 140px;
-                        left: 110px;
+                        font-size: 4em;
                     }
                 }
                 .roll {
                     position: absolute;
+                    width: 152px;
+                    height: 35px;
+                    background-color: red;
+                    color: white;
+                    font-family: $fonts;
+                    font-size: 1.5em;
+                    border: none;
                 }         
             }
+            #pawn1 {
+                @include pawn;
+                background-color: white;
+            }
+            #pawn2 {
+                @include pawn;
+                background-color: black;
+            }
+            .functionElement {
+                width: 150px;
+                
+            }
         }
+
     
     }
     
