@@ -34,17 +34,25 @@ class Game {
             this.diceValue = 0
         }
         dice() {
-            console.log("rys");
-            
+           
             if (this.state == 0){
                 console.log(document.querySelector('.diceArea'));
-                
-                //document.querySelector('.diceArea').
-            
+
                 let button = document.createElement('button');
                 button.classList.add('roll');
                 document.getElementById('diceContainer').appendChild(button);
                 button.innerHTML = 'Rzuć kostką';
+
+                let dice = document.createElement('div');
+                dice.classList.add('diceArea');
+
+                document.getElementById('diceContainer').appendChild(dice);
+
+                let diceParagraph = document.createElement('p');
+                diceParagraph.classList.add('diceParagraph');
+                dice.appendChild(diceParagraph);
+
+                button.addEventListener('click', () => { diceRoll() })
 
                 let diceRoll = () => {
                     let diceValue = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
@@ -52,24 +60,28 @@ class Game {
                     this.diceValue = diceValue;
                     this.movement();
                 }
-
-                button.addEventListener('click', () => { diceRoll() })
-
-                let dice = document.createElement('div');
-                dice.classList.add('diceArea');
-
-                dice.style.display = 'block';
-                document.getElementById('diceContainer').appendChild(dice);
-
-                let diceParagraph = document.createElement('p');
-                diceParagraph.classList.add('diceParagraph');
-                dice.appendChild(diceParagraph);
             }
         }
-
+        players() {
+            if(this.state == 0) {
+                this.players[0].name = prompt("Podaj imię pierwszego gracza. Gracz biały");
+                this.players[1].name = prompt("Podaj imię drugiego gracza. Gracz czarny");
+                this.pawns();
+            }
+        }
+        pawns() {
+            let firstBox = document.querySelector("[data-counter='0']");
+            firstBox.style.position = 'relative';
+            let pawn0 = document.createElement('div');
+            pawn0.classList.add('pawn0');
+            firstBox.appendChild(pawn0);
+            let pawn1 = document.createElement('div');
+            pawn1.classList.add('pawn1');
+            firstBox.appendChild(pawn1);
+        }
         movement() {
             this.players[i].position += this.diceValue;
-            if(this.position) {
+            if(this.players[i].position === this.gamePath.length-1) {
             
             }
             if(this.position >= this.gamePath.length) {
@@ -86,10 +98,9 @@ class Generator extends Game {
             this.width = 10;
             this.height = 10;
             this.gamePath = [];
+            //funkcje do przypisania do wybranej ścieżki
             this.cellsFunc = [
-                {description: "Dwa pola do przodu", val: 2},
                 {description: "Jedno pole do przodu", val: 1},
-                {description: "Dwa pola do tyłu", val: -2},
                 {description: "Jedno pole do tyłu", val: -1},
                 {description: "Strata kolejki", val: 0},
                 {description: "Dodatkowy ruch", val: 'x'},
@@ -140,30 +151,23 @@ class Generator extends Game {
                             if(!numberingCellsminus1.classList.contains('active') && (parseInt(numberingCells)-1)%10!=9) {
                                 numberingCellsminus1.classList.add('potentialActive');
                             }  
+                            
                         }
-                    } else if (this.state == 2) { //stan 2 czyli wybieranie własności
-                        // random();
+                    } else if (this.state == 2) { //stan 2 czyli wybieranie własności i przypisanyanie do ścieżki
                         
+                        if(el.target.classList.contains('active')) {
+                            let func = this.cellsFunc[Math.floor(Math.random() * (this.cellsFunc.length))].val;
+                            console.log(func);
+                            el.target.setAttribute('data-val', func);
+                        }
                         
-                        let func = this.cellsFunc[Math.floor(Math.random() * (this.cellsFunc.length))].val;
-                        console.log(func);
-                        el.target.setAttribute('data-val', func);
-                        //addFunctionsOnPath();
                     }
                     el.target.classList.remove('potentialActive');
+                    newDiv.classList.remove('potentialActive');
                 });
                 
 
             } 
-            // let addFunctionsOnPath = (el) => {
-            //     console.log(this.state);
-            //     console.log('dupa dupa');
-            //     for(let i=1; i<this.gamePath.length; i++) {
-            //         let func = this.cellsFuns[(Math.random() * (this.cellsFuns.length))].val;
-            //         console.log(func);
-            //         this.gamePath[i].setAttribute('data-val', func);
-            //     }
-            // }
         }
         createNextButton() {
             let nextButton = document.createElement('button');
@@ -183,16 +187,30 @@ class Generator extends Game {
                     console.log("kostka");
                     
                     nextButton.style.display = 'none';
+                    // document.querySelectorAll('[data-counter]').classList.add('gamePath');
+                    
                     super.dice();
                 }else{
                     console.log("aktualna?",this.state);
                 }
                 
+                let start = document.querySelector("[data-counter='0']");
+                start.classList.add('startMeta');
+                start.classList.remove('active');
+                start.innerHTML = 'START';
+               
+                let lastPoint = this.gamePath.length-1;
+                let meta = document.querySelector("[data-counter='"+lastPoint+"']");
+                meta.classList.add('startMeta');
+                meta.classList.remove('active');
+                meta.innerHTML = 'META';
+
+                super.players();
 
             })
         }
 }
 
 //     //randomowe przypisanie funkcji pod pola ścieżki, poza startem i końcem
-//     //kostka do gry
+
 //     //pionki i poruszanie się po ścieżce

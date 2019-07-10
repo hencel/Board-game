@@ -31,7 +31,7 @@ body {
                 margin: auto;
                 width: 500px;
                 height: 500px;  
-                background-color: rgb(221, 217, 217);
+                background-color: #FCF7F8;
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
@@ -40,29 +40,37 @@ body {
                 .cell {
                     width: 40px;
                     height: 40px;
-                    border: 1px solid red;
+                    border: 1px solid #4E8098;
                     border-radius: 10%;
                     margin: 2px;
                 }
                 .active {
-                    background-color: red;
+                    background-color: #A31621;
                 }
                 .potentialActive {
-                    background-color: green;
+                    background-color: #90C2E7;
+                }
+                .startMeta {
+                    background-color: #A31621;
+                    color: #CED3DC;
+                    text-align: center;
+                    font-weight: bold;
+                }
+                .gamePath {
+                    background-color: #90C2E7;
                 }
             }
             #diceContainer {
-                display: block;
                 width: 40%;
                 position: relative;
                 .diceArea {
-                    display: block;
                     height: 150px;
                     width: 150px;
                     border: 1px solid grey;
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    text-align: center;
                     .diceParagraph {
                         font-size: 4em;
                     }
@@ -76,22 +84,44 @@ body {
                     font-family: $fonts;
                     font-size: 1.5em;
                     border: none;
+                    &:hover {
+                        background-color:  #4E8098;
+                    }
                 }         
             }
-            #pawn1 {
+            .pawn0 {
                 @include pawn;
-                background-color: white;
+                background-color: yellow;
+                position: absolute;
+                left:0;
+                top: 50%;
+                &:hover {
+                    transform: scale(3.5);
+                }
             }
-            #pawn2 {
+            .pawn1 {
                 @include pawn;
                 background-color: black;
+                position: absolute;
+                right:0;
+                top: 50%;
+                &:hover {
+                    transform: scale(3.5);
+                }
             }
             .functionElement {
                 width: 150px;
                 
             }
         }
-
+        #infoContainer {
+           
+            margin: auto;
+            width: 80%;
+            height: 100px;
+            border: 1px solid black;
+            text-align: center;
+        }
     
     }
     
