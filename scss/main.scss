@@ -96,7 +96,8 @@ body {
                 left:0;
                 top: 50%;
                 &:hover {
-                    transform: scale(3.5);
+                    transform: scale(3);
+                    z-index: 1;
                 }
             }
             .pawn1 {

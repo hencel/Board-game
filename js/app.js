@@ -33,8 +33,9 @@ class Game {
             this.area = [];
             this.diceValue = 0
         }
+        //kostka do gry
         dice() {
-           
+           //odpalana jeśli stan gry jest 0
             if (this.state == 0){
                 console.log(document.querySelector('.diceArea'));
 
@@ -53,15 +54,16 @@ class Game {
                 dice.appendChild(diceParagraph);
 
                 button.addEventListener('click', () => { diceRoll() })
-
+                //losowanie wartości. Podanie wartości na ekranie i zapisanie w diceValue
                 let diceRoll = () => {
                     let diceValue = Math.floor(Math.random() * (6 - 1 + 1)) + 1;
                     diceParagraph.innerHTML = diceValue;
                     this.diceValue = diceValue;
-                    this.movement();
+                    // this.movement();
                 }
             }
         }
+        //definiujemy graczy, gracze podają imiona zapisywane w state
         players() {
             if(this.state == 0) {
                 this.players[0].name = prompt("Podaj imię pierwszego gracza. Gracz biały");
@@ -69,6 +71,7 @@ class Game {
                 this.pawns();
             }
         }
+        //tworzenie pionków, odpalone zaraz po imionach graczy
         pawns() {
             let firstBox = document.querySelector("[data-counter='0']");
             firstBox.style.position = 'relative';
@@ -78,8 +81,13 @@ class Game {
             let pawn1 = document.createElement('div');
             pawn1.classList.add('pawn1');
             firstBox.appendChild(pawn1);
+            //odpalenie pierwszego ruchu
+            this.movement();
         }
         movement() {
+            if(this.nextPlayer === 0) {
+
+            }
             this.players[i].position += this.diceValue;
             if(this.players[i].position === this.gamePath.length-1) {
             
