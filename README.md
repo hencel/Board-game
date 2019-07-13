@@ -1,5 +1,22 @@
 # Board-game
-Generator of classic board game on computer edition. Include board preparing with path for play. 
-After generation of game we can play with our friend.
+​
+Generator of classic board game on computer edition and game to play. 
+​
+# Play: 
+The user creates his own game path and attributes the functions to path elements. After generation a game, two users can play against each other. 
+The target is to get the last point of the path before the opponent.
 
-Project based on Vanilla JS.
+# Technologies: 
+- Vanilla JS
+- Sass
+​
+# To do:
+​
+- preparwing RWD version to mobile 
+- adding new functions to path elements
+- modifications of game graphics
+- preparing version to online gaming between two gamers
+​
+#Install:
+​
+After download all files, make npm install to create node_elements.
