@@ -24,6 +24,6 @@ The target is to get the last point of the path before the opponent.
 - modifications of game graphics
 - preparing version to online gaming between two gamers
 ​
-#Install:
+# Install:
 ​
 After download all files, make npm install to create node_elements.
