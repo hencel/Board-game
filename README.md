@@ -10,6 +10,13 @@ The target is to get the last point of the path before the opponent.
 - Vanilla JS
 - Sass
 ​
+#Features:
+- creating game board and path for game
+- preparing functional cells of the path
+- dice for game
+- panel with informations for gamers
+- game :)
+
 # To do:
 ​
 - preparwing RWD version to mobile 
