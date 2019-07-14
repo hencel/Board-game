@@ -8,17 +8,18 @@
     height: 15px;
     border-radius: 50%;
 }
-$fonts: 'Indie Flower', cursive;
+$fonts: 'Roboto', cursive;
 
 body {
     background-size: cover;
     background-repeat: no-repeat;
+    font-family: $fonts;
     .main {
         padding: 30px;
         .title {
             width: 100%;
             text-align: center;
-            font-family: $fonts;
+            
             font-size: 2.5em;
         }
         #gameContainer {
