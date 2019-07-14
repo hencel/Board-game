@@ -10,7 +10,7 @@ The target is to get the last point of the path before the opponent.
 - Vanilla JS
 - Sass
 ​
-#Features:
+# Features:
 - creating game board and path for game
 - preparing functional cells of the path
 - dice for game
