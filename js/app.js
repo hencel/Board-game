@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let generator = new Generator();
     generator.createBoard();
 });
-
+//stany gry: 1: tworzenie planszy 2: przypisywanie funkcji kolejnym 
 class Game { 
         constructor() {          
             this.state = 1;
@@ -265,11 +265,11 @@ class Generator extends Game {
                         }
                     } else if (this.state == 2) { //stan 2 czyli wybieranie własności i przypisywanie do ścieżki
                         let infoContainer = document.querySelector('#infoContainer');
-                        
+                        //przypisanie funkcji
                         if(el.target.classList.contains('active')) {
                             let func = this.cellsFunc[Math.floor(Math.random() * (this.cellsFunc.length))].val;
                             el.target.setAttribute('data-val', func);
-                            
+                            el.target.style.background = "url('/img/obj_stoneblock009.png') no-repeat center bottom/cover"; 
                             //wyświetlenie przypisanej funkcji w polu info
                             if(func === '1') {
                                 infoContainer.innerHTML = "Jedno pole do przodu";
@@ -283,29 +283,28 @@ class Generator extends Game {
                                 infoContainer.innerHTML = "Powrót na start"; 
                             }
                         }
-                        
-                        // let cell = document.querySelectorAll('.cell');
-                        // if(!cell.classList.contains('active')) {
-                        //     this.style.backgroundImage = 'url(/img/rpg2.png)';
-                        // }
+
                     }
                 });
                 
 
             } 
         }
+        //tworzenie przycisku do przełączania kolejnych etapów
         createNextButton() {
             let nextButton = document.createElement('button');
             document.getElementById("diceContainer").appendChild(nextButton);
             nextButton.className = 'roll';
             nextButton.innerHTML = 'Następny etap';
-
+            //usuwamy pozostałe klasy potencial
             nextButton.addEventListener('click', (el) => {
                 let potential = document.querySelectorAll('.potentialActive');
                     for(let i=0; i<potential.length; i++) {
                         potential[i].classList.remove('potentialActive');
                     }
+                    //info dla usera o kolejnym kroku
                 document.querySelector('#infoContainer').innerHTML = 'Przypisz losowe funkcje do wybranych pól. Potem kliknij "Następny etap"';
+                //zmieniamy stan gry 
                 this.state += 1;
                 if(this.state > 2 ){
                     this.state = 0;
