@@ -19,7 +19,6 @@ body {
         .title {
             width: 100%;
             text-align: center;
-            
             font-size: 2.5em;
         }
         #gameContainer {
@@ -46,14 +45,10 @@ body {
                     margin: 2px;
                     position: relative;
                 }
-                .active {
-                    background: url("/img/obj_stoneblock005.jpg") no-repeat center bottom/cover #A31621;
-                }
                 .potentialActive {
                     background-color: #90C2E7;
                 }
                 .startMeta {
-                    background: url("/img/obj_stoneblock005.jpg") no-repeat center bottom/cover #A31621;
                     color: black;
                     text-align: center;
                     font-weight: 700;

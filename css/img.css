@@ -1,3 +1,9 @@
-body {
-    background-color: white
+.active {
+    background: url("../img/obj_stoneblock005.jpg") no-repeat center bottom/cover #A31621;
+}
+.startMeta {
+    background: url("../img/obj_stoneblock005.jpg") no-repeat center bottom/cover #A31621;
+}
+.functionalCell {
+    background: url("../img/obj_stoneblock009.jpg") no-repeat center bottom/cover;
 }

@@ -269,7 +269,7 @@ class Generator extends Game {
                         if(el.target.classList.contains('active')) {
                             let func = this.cellsFunc[Math.floor(Math.random() * (this.cellsFunc.length))].val;
                             el.target.setAttribute('data-val', func);
-                            el.target.style.background = "url('/img/obj_stoneblock009.png') no-repeat center bottom/cover"; 
+                            el.target.classList.add('functionalCell');
                             //wyświetlenie przypisanej funkcji w polu info
                             if(func === '1') {
                                 infoContainer.innerHTML = "Jedno pole do przodu";
