@@ -26,4 +26,4 @@ The target is to get the last point of the path before the opponent.
 ​
 # Install:
 ​
-After download all files, make npm install to create node_elements.
+After download all files, make "npm install" to create node_elements and run "npm start".
